@@ -84,47 +84,76 @@ for(const[ key, {open,close}] of enteries){
 // const googNewArr = [1,2,...arr];
 // console.log(googNewArr)
 
-//
-// const game = {
-//     team1: 'Bayern Munich',
-//     team2: 'Borrussia Dortmund',
-//     players: [
-//         [
-//             'Neuer',
-//             'Pavard',
-//             'Martinez',
-//             'Alaba',
-//             'Davies',
-//             'Kimmich',
-//             'Goretzka',
-//             'Coman',
-//             'Muller',
-//             'Gnarby',
-//             'Lewandowski',
-//         ],
-//         [
-//             'Burki',
-//             'Schulz',
-//             'Hummels',
-//             'Akanji',
-//             'Hakimi',
-//             'Weigl',
-//             'Witsel',
-//             'Hazard',
-//             'Brandt',
-//             'Sancho',
-//             'Gotze',
-//         ],
-//     ],
-//     score: '4:0',
-//     scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-//     date: 'Nov 9th, 2037',
-//     odds: {
-//         team1: 1.33,
-//         x: 3.25,
-//         team2: 6.5,
-//     },
-// };
+
+const game = {
+    team1: 'Bayern Munich',
+    team2: 'Borrussia Dortmund',
+    players: [
+        [
+            'Neuer',
+            'Pavard',
+            'Martinez',
+            'Alaba',
+            'Davies',
+            'Kimmich',
+            'Goretzka',
+            'Coman',
+            'Muller',
+            'Gnarby',
+            'Lewandowski',
+        ],
+        [
+            'Burki',
+            'Schulz',
+            'Hummels',
+            'Akanji',
+            'Hakimi',
+            'Weigl',
+            'Witsel',
+            'Hazard',
+            'Brandt',
+            'Sancho',
+            'Gotze',
+        ],
+    ],
+    score: '4:0',
+    scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+    date: 'Nov 9th, 2037',
+    odds: {
+        team1: 1.33,
+        x: 3.25,
+        team2: 6.5,
+    },
+};
+
+// challenge 2
+
+const scored = game.scored;
+for(const [i, g] of scored.entries()) console.log(`Goal ${i+1}: ${g}`)
+
+const odds = game.odds;
+const oddsValue = Object.values(odds)
+let average = 0;
+oddsValue.forEach(n=>average+=n)
+console.log(average/oddsValue.length)
+
+const oddsEntries = Object.entries(odds)
+console.log(oddsEntries)
+for(const [victory, odd] of oddsEntries) console.log(`Odd of ${game[victory]?game[victory]:'draw'}: ${odd}`)
+
+const players = [...game.players[0],...game.players[1]];
+const scorers = {};
+for(const player of players){
+  let counter = 0;
+  for(const g of game.scored){
+    if(g === player) counter++;
+  }
+  scorers[player] = counter;
+}
+
+console.log(scorers)
+
+// challenge 1
 // // 1
 // const player1 = game.players[0];
 // const player2 = game.players[1];
