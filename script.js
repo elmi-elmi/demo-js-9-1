@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
 // Data needed for a later exercise
 // const flights =
 //   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
-const openingHours =  {
+const openingHours = {
   thu: {
     open: 12,
     close: 22,
@@ -19,22 +19,22 @@ const openingHours =  {
 };
 // Data needed for first part of the section
 const restaurant = {
-  name: 'Classico Italiano',
-  location: 'Via Angelo Tavanti 23, Firenze, Italy',
-  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  name: "Classico Italiano",
+  location: "Via Angelo Tavanti 23, Firenze, Italy",
+  categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
+  starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
+  mainMenu: ["Pizza", "Pasta", "Risotto"],
 
   openingHours,
-  order: function(starterIndex, mainIndex){
-    return [this.starterMenu[starterIndex],this.mainMenu[mainIndex]]
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
-  orderPasta: function(ing1, ing2, ing3){
-    console.log(`Here is you delicious pasta with ${ing1},${ing2},${ing3} `)
-  }
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(`Here is you delicious pasta with ${ing1},${ing2},${ing3} `);
+  },
 };
 const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
-const days = ['sun','mon','tue','wed','thu', 'fri','sat'];
+const days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 
 // for(const day of days){
 //   const open = restaurant.openingHours[day]?.open ?? 'closed';
@@ -42,18 +42,56 @@ const days = ['sun','mon','tue','wed','thu', 'fri','sat'];
 // }
 
 const properties = Object.keys(openingHours);
-console.log(properties)
+console.log(properties);
 
 for (const day of Object.keys(openingHours)) console.log(day);
 const values = Object.values(openingHours);
-console.log(values)
+console.log(values);
 
 const enteries = Object.entries(openingHours);
 console.log(enteries);
 
-for(const[ key, {open,close}] of enteries){
+for (const [key, { open, close }] of enteries) {
   console.log(`On ${key} we open at ${open} and close at ${close}`);
 }
+
+// Sets
+
+const ordersSet = new Set(["Pasta", "Pizza", "Risotto", "Pasta", "Pizza"]);
+console.log(ordersSet.size);
+console.log(ordersSet.has("Pizza"));
+console.log(ordersSet.has("Noon"));
+ordersSet.add("Noon Barbari");
+ordersSet.delete("Risotto");
+console.log(ordersSet);
+
+const rest = new Map();
+rest
+  .set("open", 11)
+  .set("close", 22)
+  .set(true, "is open")
+  .set(false, "is close");
+const time = 1;
+console.log(rest.get(time > rest.get("open") && time < rest.get("close")));
+
+const question = new Map([
+  ["q", "what is the best?"],
+  [1, "C"],
+  [2, "Python"],
+  [3, "Javascript"],
+  ["Correct", 3],
+  [true, "Correct"],
+  [false, "fuck"],
+]);
+console.log(question);
+console.log(question.get("q"));
+for (const [key, value] of question.entries()) {
+  if (typeof key === "number") console.log(`Answer ${key}: ${value}`);
+}
+
+const answer = Number(prompt("Your answer"));
+
+console.log(question.get(answer === question.get("Correct")));
 
 // const user = [{name:'shahrokh', email:'hello@shahrokh.io'}]
 // console.log(user[0]?.name ?? 'User array empty')
@@ -84,74 +122,73 @@ for(const[ key, {open,close}] of enteries){
 // const googNewArr = [1,2,...arr];
 // console.log(googNewArr)
 
-
 const game = {
-    team1: 'Bayern Munich',
-    team2: 'Borrussia Dortmund',
-    players: [
-        [
-            'Neuer',
-            'Pavard',
-            'Martinez',
-            'Alaba',
-            'Davies',
-            'Kimmich',
-            'Goretzka',
-            'Coman',
-            'Muller',
-            'Gnarby',
-            'Lewandowski',
-        ],
-        [
-            'Burki',
-            'Schulz',
-            'Hummels',
-            'Akanji',
-            'Hakimi',
-            'Weigl',
-            'Witsel',
-            'Hazard',
-            'Brandt',
-            'Sancho',
-            'Gotze',
-        ],
+  team1: "Bayern Munich",
+  team2: "Borrussia Dortmund",
+  players: [
+    [
+      "Neuer",
+      "Pavard",
+      "Martinez",
+      "Alaba",
+      "Davies",
+      "Kimmich",
+      "Goretzka",
+      "Coman",
+      "Muller",
+      "Gnarby",
+      "Lewandowski",
     ],
-    score: '4:0',
-    scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-    date: 'Nov 9th, 2037',
-    odds: {
-        team1: 1.33,
-        x: 3.25,
-        team2: 6.5,
-    },
+    [
+      "Burki",
+      "Schulz",
+      "Hummels",
+      "Akanji",
+      "Hakimi",
+      "Weigl",
+      "Witsel",
+      "Hazard",
+      "Brandt",
+      "Sancho",
+      "Gotze",
+    ],
+  ],
+  score: "4:0",
+  scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
+  date: "Nov 9th, 2037",
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
 };
 
 // challenge 2
-
-const scored = game.scored;
-for(const [i, g] of scored.entries()) console.log(`Goal ${i+1}: ${g}`)
-
-const odds = game.odds;
-const oddsValue = Object.values(odds)
-let average = 0;
-oddsValue.forEach(n=>average+=n)
-console.log(average/oddsValue.length)
-
-const oddsEntries = Object.entries(odds)
-console.log(oddsEntries)
-for(const [victory, odd] of oddsEntries) console.log(`Odd of ${game[victory]?game[victory]:'draw'}: ${odd}`)
-
-const players = [...game.players[0],...game.players[1]];
-const scorers = {};
-for(const player of players){
-  let counter = 0;
-  for(const g of game.scored){
-    if(g === player) counter++;
-  }
-  scorers[player] = counter;
-}
-
-console.log(scorers)
+//
+// const scored = game.scored;
+// for(const [i, g] of scored.entries()) console.log(`Goal ${i+1}: ${g}`)
+//
+// const odds = game.odds;
+// const oddsValue = Object.values(odds)
+// let average = 0;
+// oddsValue.forEach(n=>average+=n)
+// console.log(average/oddsValue.length)
+//
+// const oddsEntries = Object.entries(odds)
+// console.log(oddsEntries)
+// for(const [victory, odd] of oddsEntries) console.log(`Odd of ${game[victory]?game[victory]:'draw'}: ${odd}`)
+//
+// const players = [...game.players[0],...game.players[1]];
+// const scorers = {};
+// for(const player of players){
+//   let counter = 0;
+//   for(const g of game.scored){
+//     if(g === player) counter++;
+//   }
+//   scorers[player] = counter;
+// }
+//
+// console.log(scorers)
 
 // challenge 1
 // // 1
