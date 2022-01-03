@@ -83,16 +83,133 @@ const question = new Map([
   [true, "Correct"],
   [false, "fuck"],
 ]);
-console.log(question);
-console.log(question.get("q"));
-for (const [key, value] of question.entries()) {
-  if (typeof key === "number") console.log(`Answer ${key}: ${value}`);
+// console.log(question);
+// console.log(question.get("q"));
+// for (const [key, value] of question.entries()) {
+//   if (typeof key === "number") console.log(`Answer ${key}: ${value}`);
+// }
+
+// const answer = Number(prompt("Your answer"));
+//
+// console.log(question.get(answer === question.get("Correct")));
+
+// const checkMiddleSeat = function (seat) {
+//   // E and B is middle seat
+//   const lastLetter = seat.slice(-1);
+//   if (lastLetter === "B" || lastLetter === "E")
+//     console.log("this is middle seat");
+//   else console.log("no not");
+// };
+// checkMiddleSeat("11B");
+// checkMiddleSeat("23C");
+// checkMiddleSeat("3E");
+const airline = "TAP Air Portugal";
+const priceGB = "288,98E";
+const priceUS = priceGB.replace(",", ".");
+console.log(priceUS);
+
+const announcment = "All passenger come to boarding door 23. door to go come;";
+// announcment.replace(/door/, "gate");
+// announcment.toUpperCase();
+// console.log(announcment);
+announcment.start;
+const myName = "shahrokh++elmi";
+console.log(myName.split("+"));
+
+const newName = ["Mr. ", "Shahrokh", "emli".toUpperCase()].join("");
+console.log(newName);
+
+const passenger = "jessica ann smith devis";
+
+const capitilizing = function (name) {
+  const names = name.split(" ");
+  const namesUpper = [];
+  for (const n of names) {
+    namesUpper.push(n[0].toUpperCase() + n.slice(1));
+  }
+  console.log(namesUpper.join(" "));
+};
+capitilizing("hi there is this what the fuc");
+console.log("hi there".padStart(25, "--"));
+
+// const makeCreditCart = function (cardNumber) {
+//   console.log();
+// };
+// console.log("hi".repeat(4));
+// const plan = "A320";
+document.body.append(document.createElement("textarea"));
+document.body.append(document.createElement("button"));
+
+const button = document.querySelector("button");
+
+button.addEventListener("click", () => {
+  const text = document.querySelector("textarea").value;
+  camelCaseConverter(text);
+});
+
+const camelCaseConverter = function (word) {
+  console.log(word);
+  const words = word.trim().toLowerCase().split("_");
+  console.log(words);
+  const wordCamel = [words[0]];
+  for (const w of words.slice(1)) {
+    wordCamel.push(w.replace(w[0], w[0].toUpperCase()));
+  }
+  console.log(wordCamel.join(""));
+};
+
+camelCaseConverter("hi_there_fuck_you   ");
+
+const flights =
+  "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
+
+const rows = flights.split("+");
+
+// console.log(rows);
+for (const row of rows) {
+  const [typical, from, to, time] = row.split(";");
+
+  console.log("-----------");
+  console.log(
+    `${typical.replaceAll("_", " ")} ${from.slice(0, 3).toUpperCase()} ${to
+      .slice(0, 3)
+      .toUpperCase()} ${time.replace(":", "h")}`
+  );
 }
-
-const answer = Number(prompt("Your answer"));
-
-console.log(question.get(answer === question.get("Correct")));
-
+// const rows = flights.split("+");
+// const row = rows[0].split(";");
+// row[0] = row[0].slice(1).split("_").join(" ");
+// row[1] = row[1].slice(0, 3).toUpperCase();
+// row[2] = row[2].slice(0, 3).toUpperCase();
+// row[3] = "(" + row[3].slice(0, 2) + "h" + row[3].slice(3) + ")";
+//
+// console.log(row);
+//
+// const changeFormat = function (data) {
+//   const row = data.split(";");
+//
+//   row[0] = row[0].slice(1).split("_").join(" ");
+//   row[1] = row[1].slice(0, 3).toUpperCase();
+//   row[2] = row[2].slice(0, 3).toUpperCase();
+//   row[3] = "(" + row[3].slice(0, 2) + "h" + row[3].slice(3) + ")";
+//   console.log(row.join(" "));
+//   const formated = row[0] + " from " + row[1] + " to " + row[2] + " " + row[3];
+//   return formated.padStart(45, "-");
+// };
+//
+// const converter = function (str) {
+//   const rows = str.split("+");
+//   const table = [];
+//   for (const row of rows) {
+//     const res = changeFormat(row);
+//     table.push(res);
+//   }
+//   console.log("****", table);
+// };
+//
+// converter(flights);
+// console.log(row[1].)
+// console.log(airline.slice(4, 5));
 // const user = [{name:'shahrokh', email:'hello@shahrokh.io'}]
 // console.log(user[0]?.name ?? 'User array empty')
 // for(const item of menu.entries()) console.log(item);
@@ -162,6 +279,31 @@ const game = {
     team2: 6.5,
   },
 };
+
+const gameEvents = new Map([
+  [17, "⚽️ GOAL"],
+  [36, "🔁 Substitution"],
+  [47, "⚽️ GOAL"],
+  [61, "🔁 Substitution"],
+  [64, "🔶 Yellow card"],
+  [69, "🔴 Red card"],
+  [70, "🔁 Substitution"],
+  [72, "🔁 Substitution"],
+  [76, "⚽️ GOAL"],
+  [80, "⚽️ GOAL"],
+  [92, "🔶 Yellow card"],
+]);
+// console.log(gameEvents.values());
+//
+// const event = [...new Set(gameEvents.values())];
+// console.log(event);
+//
+// gameEvents.delete(64);
+// console.log(gameEvents);
+//
+// for (const [key, e] of gameEvents.entries()) {
+//   console.log(`[${key < 45 ? "First Half" : "Second Half"}]: ${e}`);
+// }
 
 // challenge 2
 //
